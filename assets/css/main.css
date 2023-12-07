@@ -1479,6 +1479,10 @@ section {
   background: #ec2727;
 }
 
+.contact p {
+  color: #000;
+}
+
 @keyframes animate-loading {
   0% {
     transform: rotate(0deg);
