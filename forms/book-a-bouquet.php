@@ -1,45 +1,39 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $date = $_POST["date"];
+    $time = $_POST["time"];
+    $code = $_POST["code"];
+    $message = $_POST["message"];
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'galih.wahyu11@gmail.com';
+    // Set recipient email address
+    $to = "galih.wahyu1852@gmail.com"; // Replace with your email address
 
-  if( file_exists($php_email_form = '/assets/vendor/php-email-form/' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    // Subject of the email
+    $subject = "Booking Request for Bouquet";
 
-  $book_a_bouquet = new PHP_Email_Form;
-  $book_a_bouquet->ajax = true;
-  
-  $book_a_bouquet->to = $receiving_email_address;
-  $book_a_bouquet->from_name = $_POST['name'];
-  $book_a_bouquet->from_email = $_POST['email'];
-  $book_a_bouquet->subject = "New bouquet booking request from the website";
+    // Compose the email message
+    $message = "Name: $name\n";
+    $message .= "Email: $email\n";
+    $message .= "Phone: $phone\n";
+    $message .= "Date: $date\n";
+    $message .= "Time: $time\n";
+    $message .= "Code: $code\n";
+    $message .= "Additional Message:\n$message";
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $book_a_bouquet->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    // Additional headers
+    $headers = "From: $email" . "\r\n";
 
-  $book_a_bouquet->add_message( $_POST['name'], 'Name');
-  $book_a_bouquet->add_message( $_POST['email'], 'Email');
-  $book_a_bouquet->add_message( $_POST['phone'], 'Phone', 4);
-  $book_a_bouquet->add_message( $_POST['date'], 'Date', 4);
-  $book_a_bouquet->add_message( $_POST['time'], 'Time', 4);
-  $book_a_bouquet->add_message( $_POST['people'], '# of people', 1);
-  $book_a_bouquet->add_message( $_POST['message'], 'Message');
-
-  echo $book_a_bouquet->send();
+    // Send the email
+    if (mail($to, $subject, $message, $headers)) {
+        echo "success";
+    } else {
+        echo "error";
+    }
+} else {
+    echo "Invalid request method";
+}
 ?>
