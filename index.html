@@ -336,7 +336,7 @@
                 <div class="mb-3">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                  <div class="sent-message">Pemesanan anda telah terkirim. Kami akan mengkonfirmasi pemesanan anda kembali. Terima kasih!</div>
               </div>
               <div class="text-center"><button type="submit">Pesan Sekarang</button></div>
             </form>
@@ -414,7 +414,7 @@
           <div class="my-3">
             <div class="loading">Loading</div>
             <div class="error-message"></div>
-            <div class="sent-message" id="success-message">Your message has been sent. Thank you!</div>
+            <div class="sent-message" id="success-message">Pertanyaan anda telah terkirim. Terima kasih!</div>
           </div>
           <div class="text-center">
             <button type="submit">Kirim Pesan</button>
@@ -423,21 +423,13 @@
         
         <script>
           function submitForm() {
-            // Simulate form submission (replace this with actual AJAX form submission)
-            // For demonstration purposes, we will just show a success message
-        
-            // Display the success message
+
             document.getElementById('success-message').style.display = 'block';
-        
-            // You can replace the following setTimeout with an actual AJAX form submission
+
             setTimeout(function () {
-              // Reset form after successful submission
               document.querySelector('.php-email-form').reset();
-              // Hide the success message
               document.getElementById('success-message').style.display = 'none';
-            }, 5000); // 5000 milliseconds (5 seconds) - adjust as needed
-        
-            // Prevent the form from actually submitting
+            }, 5000);
             return false;
           }
         </script>
@@ -474,10 +466,10 @@
         <div class="col-lg-4 col-md-6 footer-links">
           <h4>Ikuti Kami</h4>
           <div class="social-links d-flex">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://twitter.com/" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://facebook.com/" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com/" class="linkedin"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
