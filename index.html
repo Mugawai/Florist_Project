@@ -333,10 +333,10 @@
                 <div class="validate"></div>
               </div>
               
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                <div class="mb-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Pesan Sekarang</button></div>
             </form>
@@ -396,7 +396,7 @@
             </div>
           </div><!-- End Info Item -->
         </div>
-        <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4">
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form p-3 p-md-4" onsubmit="return submitForm()">
           <div class="row">
             <div class="col-xl-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
@@ -414,10 +414,34 @@
           <div class="my-3">
             <div class="loading">Loading</div>
             <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
+            <div class="sent-message" id="success-message">Your message has been sent. Thank you!</div>
           </div>
-          <div class="text-center"><button type="submit">Kirim Pesan</button></div>
-        </form><!--End Contact Form -->
+          <div class="text-center">
+            <button type="submit">Kirim Pesan</button>
+          </div>
+        </form>
+        
+        <script>
+          function submitForm() {
+            // Simulate form submission (replace this with actual AJAX form submission)
+            // For demonstration purposes, we will just show a success message
+        
+            // Display the success message
+            document.getElementById('success-message').style.display = 'block';
+        
+            // You can replace the following setTimeout with an actual AJAX form submission
+            setTimeout(function () {
+              // Reset form after successful submission
+              document.querySelector('.php-email-form').reset();
+              // Hide the success message
+              document.getElementById('success-message').style.display = 'none';
+            }, 5000); // 5000 milliseconds (5 seconds) - adjust as needed
+        
+            // Prevent the form from actually submitting
+            return false;
+          }
+        </script>
+        
       </div>
     </section><!-- End Contact Section -->
 
@@ -478,10 +502,34 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Handle form submission
+      const form = document.querySelector('.php-email-form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+  
+        // Simulate form submission (you can replace this with actual form submission)
+        // For demonstration purposes, we will just show a success message
+  
+        const successMessage = document.querySelector('.sent-message');
+        successMessage.style.display = 'block';
+  
+        // You can replace the following setTimeout with an actual AJAX form submission
+        setTimeout(function () {
+          // Reset form after successful submission
+          form.reset();
+          successMessage.style.display = 'none';
+        }, 5000); // 5000 milliseconds (5 seconds) - adjust as needed
+      });
+    });
+  </script>
+  
 
 </body>
 
